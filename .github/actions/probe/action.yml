@@ -1,16 +1,14 @@
 name: probe
-description: Composite with distinctly named inner steps
+description: Composite exporting an inner step outcome as a declared output
+outputs:
+  inner-outcome:
+    description: Outcome of the deliberately failing inner step
+    value: ${{ steps.bravo.outcome }}
 runs:
   using: composite
   steps:
-    - name: INNER_STEP_ALPHA
-      shell: bash
-      run: echo alpha
     - name: INNER_STEP_BRAVO
       id: bravo
       shell: bash
       continue-on-error: true
       run: exit 1
-    - name: INNER_STEP_CHARLIE
-      shell: bash
-      run: echo "bravo outcome was ${{ steps.bravo.outcome }}"
