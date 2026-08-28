@@ -1,7 +1,7 @@
 name: probe
-description: Trivial composite action for testing cross-transfer action resolution
+description: Version-marked probe action
 runs:
   using: composite
   steps:
     - shell: bash
-      run: echo "PROBE_ACTION_RESOLVED=yes"
+      run: echo "PROBE_VERSION=1.0.0"
